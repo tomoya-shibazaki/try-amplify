@@ -10,6 +10,11 @@
       "StackName": "amplify-tryamp-dev-53114",
       "StackId": "arn:aws:cloudformation:us-east-1:087760967110:stack/amplify-tryamp-dev-53114/45a34d30-ed87-11eb-b6a8-0a7396047ff3",
       "AmplifyAppId": "d14h7r9ft7not6"
+    },
+    "categories": {
+      "auth": {
+        "tryamp668bdfb8": {}
+      }
     }
   }
 }
