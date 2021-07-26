@@ -1,3 +1,6 @@
+# Reference
+[AWS再入門ブログリレー AWS Amplify編](https://dev.classmethod.jp/articles/reintroduction-aws-amplify/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

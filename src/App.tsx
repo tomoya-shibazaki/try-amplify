@@ -6,25 +6,25 @@ import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';
 import awsmobile from './aws-exports';
 import Todos from './Todos';
 
-Amplify.configure(awsmobile)
+Amplify.configure(awsmobile);
 
 const App = () => {
-  const [authState, setAuthState] = React.useState()
+  const [authState, setAuthState] = React.useState<AuthState>();
 
   useEffect(() => {
     return onAuthUIStateChange((nextAuthState, authData) => {
-      setAuthState(nextAuthState)
-    })
-  }, [])
+      setAuthState(nextAuthState);
+    });
+  }, []);
 
   return authState === AuthState.SignedIn ? (
     <div className="App">
-      <Todos />
-      <AmplifySignOut />
+      <Todos/>
+      <AmplifySignOut/>
     </div>
   ) : (
     <AmplifyAuthenticator/>
-  )
+  );
 }
 
-export default App
+export default App;
