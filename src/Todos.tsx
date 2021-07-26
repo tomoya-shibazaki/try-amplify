@@ -1,13 +1,12 @@
-import React, {Component, useEffect, useState} from 'react';
-import './App.css';
-import Amplify, {API, graphqlOperation} from "aws-amplify";
-import {GraphQLResult} from '@aws-amplify/api/lib/types';
-import {listTodos} from "./graphql/queries";
-import {createTodo} from "./graphql/mutations";
-import awsmobile from './aws-exports';
-import {ListTodosQuery} from './API';
+import React, {Component, useEffect, useState} from 'react'
+import Amplify, {API, graphqlOperation} from "aws-amplify"
+import {GraphQLResult} from '@aws-amplify/api/lib/types'
+import {listTodos} from "./graphql/queries"
+import {createTodo} from "./graphql/mutations"
+import awsmobile from './aws-exports'
+import {ListTodosQuery} from './API'
 
-Amplify.configure(awsmobile);
+Amplify.configure(awsmobile)
 
 type Todo = {
   id: string,
@@ -19,20 +18,20 @@ type Todo = {
 
 
 const Todos: React.FC = () => {
-  const [state, setState] = useState<Todo[]>([]);
+  const [state, setState] = useState<Todo[]>([])
   const fetchTodos = async () => {
     // query
     const response = (await API.graphql(
       graphqlOperation(listTodos)
-    )) as GraphQLResult;
-    const todos = response.data as ListTodosQuery;
+    )) as GraphQLResult
+    const todos = response.data as ListTodosQuery
     if (todos.listTodos != null) {
-      setState(todos.listTodos.items as Todo[]);
+      setState(todos.listTodos.items as Todo[])
     }
-  };
+  }
   useEffect(() => {
-    fetchTodos();
-  }, []);
+    fetchTodos()
+  }, [])
 
   const addTodo = async () => {
     try {
@@ -47,7 +46,7 @@ const Todos: React.FC = () => {
       )
       fetchTodos()
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
   return (
@@ -64,6 +63,6 @@ const Todos: React.FC = () => {
       </ol>
       <button onClick={addTodo}>AddTodo</button>
     </div>
-  );
+  )
 }
-export default Todos;
+export default Todos
