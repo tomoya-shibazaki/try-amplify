@@ -54,7 +54,7 @@ const Todos: React.FC = () => {
       <ol>
         {state.map(item => {
           return (
-            <div>
+            <div key={item.id}>
               <li>{item.name}</li>
               <ul>{item.description}</ul>
             </div>
