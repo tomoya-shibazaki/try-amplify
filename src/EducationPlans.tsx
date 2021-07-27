@@ -1,8 +1,7 @@
-import React, {Component, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Amplify, {API, graphqlOperation} from "aws-amplify"
 import {GraphQLResult} from '@aws-amplify/api/lib/types'
 import {listEducationPlans} from "./graphql/queries"
-import {createEducationPlan} from "./graphql/mutations"
 import awsmobile from './aws-exports'
 import {ListEducationPlansQuery} from './API'
 
@@ -40,29 +39,6 @@ const EducationPlans: React.FC = () => {
     fetchEducationPlans()
   }, [])
 
-  const addEducationPlan = async () => {
-    try {
-      // mutation
-      await API.graphql(
-        graphqlOperation(createEducationPlan, {
-          input: {
-            courseCategory: "〇〇",
-            courseName: "【事務】Excel初級ダイジェスト（３時間コース）",
-            times: 2,
-            educationType: "入職時等基礎的訓練",
-            years: 1,
-            workType: "雇入時",
-            trainigType: "OFF-JT",
-            chargeType: "無償（実費負担なし）",
-            wageType: "有給（無給部分なし）"
-          }
-        })
-      )
-      fetchEducationPlans()
-    } catch (err) {
-      console.log(err)
-    }
-  }
   const renderList = state.map((item) => {
     const { 
       id,
@@ -111,8 +87,7 @@ const EducationPlans: React.FC = () => {
           <>{renderList}</>
         </tbody>
       </table>
-        <button onClick={addEducationPlan}>AddEducationPlan</button>
-      </div>
+  </div>
   )
 }
 export default EducationPlans

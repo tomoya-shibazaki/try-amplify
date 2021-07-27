@@ -1,4 +1,5 @@
 import EducationPlans from './EducationPlans'
+import Form from './Form'
 
 
 const App = () => {
@@ -6,6 +7,10 @@ const App = () => {
   return (
     <div className="App">
       <EducationPlans />
+      <br />
+      <hr />
+      <br />
+      <Form />
     </div>
   )
 }
