@@ -1,12 +1,11 @@
-// import React from 'react'
-import Todos from './Todos'
+import EducationPlans from './EducationPlans'
 
 
 const App = () => {
 
   return (
     <div className="App">
-      <Todos/>
+      <EducationPlans />
     </div>
   )
 }

@@ -2,43 +2,64 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
+export const createEducationPlan = /* GraphQL */ `
+  mutation CreateEducationPlan(
+    $input: CreateEducationPlanInput!
+    $condition: ModelEducationPlanConditionInput
   ) {
-    createTodo(input: $input, condition: $condition) {
+    createEducationPlan(input: $input, condition: $condition) {
       id
-      name
-      description
+      courseCategory
+      courseName
+      times
+      educationType
+      years
+      workType
+      trainigType
+      chargeType
+      wageType
       createdAt
       updatedAt
     }
   }
 `;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
+export const updateEducationPlan = /* GraphQL */ `
+  mutation UpdateEducationPlan(
+    $input: UpdateEducationPlanInput!
+    $condition: ModelEducationPlanConditionInput
   ) {
-    updateTodo(input: $input, condition: $condition) {
+    updateEducationPlan(input: $input, condition: $condition) {
       id
-      name
-      description
+      courseCategory
+      courseName
+      times
+      educationType
+      years
+      workType
+      trainigType
+      chargeType
+      wageType
       createdAt
       updatedAt
     }
   }
 `;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
+export const deleteEducationPlan = /* GraphQL */ `
+  mutation DeleteEducationPlan(
+    $input: DeleteEducationPlanInput!
+    $condition: ModelEducationPlanConditionInput
   ) {
-    deleteTodo(input: $input, condition: $condition) {
+    deleteEducationPlan(input: $input, condition: $condition) {
       id
-      name
-      description
+      courseCategory
+      courseName
+      times
+      educationType
+      years
+      workType
+      trainigType
+      chargeType
+      wageType
       createdAt
       updatedAt
     }

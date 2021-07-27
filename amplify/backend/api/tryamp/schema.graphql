@@ -1,5 +1,12 @@
-type Todo @model {
+type EducationPlan @model {
   id: ID!
-  name: String!
-  description: String
+  courseCategory: String!
+  courseName: String!
+  times: Int!
+  educationType: String!
+  years: Int!
+  workType: String!
+  trainigType: String!
+  chargeType: String!
+  wageType: String!
 }

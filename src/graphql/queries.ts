@@ -2,28 +2,42 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
+export const getEducationPlan = /* GraphQL */ `
+  query GetEducationPlan($id: ID!) {
+    getEducationPlan(id: $id) {
       id
-      name
-      description
+      courseCategory
+      courseName
+      times
+      educationType
+      years
+      workType
+      trainigType
+      chargeType
+      wageType
       createdAt
       updatedAt
     }
   }
 `;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
+export const listEducationPlans = /* GraphQL */ `
+  query ListEducationPlans(
+    $filter: ModelEducationPlanFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listEducationPlans(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
-        description
+        courseCategory
+        courseName
+        times
+        educationType
+        years
+        workType
+        trainigType
+        chargeType
+        wageType
         createdAt
         updatedAt
       }

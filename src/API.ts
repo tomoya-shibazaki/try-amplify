@@ -2,18 +2,32 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateEducationPlanInput = {
   id?: string | null,
-  name: string,
-  description?: string | null,
+  courseCategory: string,
+  courseName: string,
+  times: number,
+  educationType: string,
+  years: number,
+  workType: string,
+  trainigType: string,
+  chargeType: string,
+  wageType: string,
 };
 
-export type ModelTodoConditionInput = {
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+export type ModelEducationPlanConditionInput = {
+  courseCategory?: ModelStringInput | null,
+  courseName?: ModelStringInput | null,
+  times?: ModelIntInput | null,
+  educationType?: ModelStringInput | null,
+  years?: ModelIntInput | null,
+  workType?: ModelStringInput | null,
+  trainigType?: ModelStringInput | null,
+  chargeType?: ModelStringInput | null,
+  wageType?: ModelStringInput | null,
+  and?: Array< ModelEducationPlanConditionInput | null > | null,
+  or?: Array< ModelEducationPlanConditionInput | null > | null,
+  not?: ModelEducationPlanConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -56,32 +70,65 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Todo = {
-  __typename: "Todo",
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type EducationPlan = {
+  __typename: "EducationPlan",
   id: string,
-  name: string,
-  description?: string | null,
+  courseCategory: string,
+  courseName: string,
+  times: number,
+  educationType: string,
+  years: number,
+  workType: string,
+  trainigType: string,
+  chargeType: string,
+  wageType: string,
   createdAt: string,
   updatedAt: string,
 };
 
-export type UpdateTodoInput = {
+export type UpdateEducationPlanInput = {
   id: string,
-  name?: string | null,
-  description?: string | null,
+  courseCategory?: string | null,
+  courseName?: string | null,
+  times?: number | null,
+  educationType?: string | null,
+  years?: number | null,
+  workType?: string | null,
+  trainigType?: string | null,
+  chargeType?: string | null,
+  wageType?: string | null,
 };
 
-export type DeleteTodoInput = {
+export type DeleteEducationPlanInput = {
   id: string,
 };
 
-export type ModelTodoFilterInput = {
+export type ModelEducationPlanFilterInput = {
   id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
+  courseCategory?: ModelStringInput | null,
+  courseName?: ModelStringInput | null,
+  times?: ModelIntInput | null,
+  educationType?: ModelStringInput | null,
+  years?: ModelIntInput | null,
+  workType?: ModelStringInput | null,
+  trainigType?: ModelStringInput | null,
+  chargeType?: ModelStringInput | null,
+  wageType?: ModelStringInput | null,
+  and?: Array< ModelEducationPlanFilterInput | null > | null,
+  or?: Array< ModelEducationPlanFilterInput | null > | null,
+  not?: ModelEducationPlanFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -100,89 +147,124 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type ModelTodoConnection = {
-  __typename: "ModelTodoConnection",
-  items?:  Array<Todo | null > | null,
+export type ModelEducationPlanConnection = {
+  __typename: "ModelEducationPlanConnection",
+  items?:  Array<EducationPlan | null > | null,
   nextToken?: string | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type CreateEducationPlanMutationVariables = {
+  input: CreateEducationPlanInput,
+  condition?: ModelEducationPlanConditionInput | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo?:  {
-    __typename: "Todo",
+export type CreateEducationPlanMutation = {
+  createEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateEducationPlanMutationVariables = {
+  input: UpdateEducationPlanInput,
+  condition?: ModelEducationPlanConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo?:  {
-    __typename: "Todo",
+export type UpdateEducationPlanMutation = {
+  updateEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeleteEducationPlanMutationVariables = {
+  input: DeleteEducationPlanInput,
+  condition?: ModelEducationPlanConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo?:  {
-    __typename: "Todo",
+export type DeleteEducationPlanMutation = {
+  deleteEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetEducationPlanQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo?:  {
-    __typename: "Todo",
+export type GetEducationPlanQuery = {
+  getEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListEducationPlansQueryVariables = {
+  filter?: ModelEducationPlanFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos?:  {
-    __typename: "ModelTodoConnection",
+export type ListEducationPlansQuery = {
+  listEducationPlans?:  {
+    __typename: "ModelEducationPlanConnection",
     items?:  Array< {
-      __typename: "Todo",
+      __typename: "EducationPlan",
       id: string,
-      name: string,
-      description?: string | null,
+      courseCategory: string,
+      courseName: string,
+      times: number,
+      educationType: string,
+      years: number,
+      workType: string,
+      trainigType: string,
+      chargeType: string,
+      wageType: string,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -190,34 +272,55 @@ export type ListTodosQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo?:  {
-    __typename: "Todo",
+export type OnCreateEducationPlanSubscription = {
+  onCreateEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo?:  {
-    __typename: "Todo",
+export type OnUpdateEducationPlanSubscription = {
+  onUpdateEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo?:  {
-    __typename: "Todo",
+export type OnDeleteEducationPlanSubscription = {
+  onDeleteEducationPlan?:  {
+    __typename: "EducationPlan",
     id: string,
-    name: string,
-    description?: string | null,
+    courseCategory: string,
+    courseName: string,
+    times: number,
+    educationType: string,
+    years: number,
+    workType: string,
+    trainigType: string,
+    chargeType: string,
+    wageType: string,
     createdAt: string,
     updatedAt: string,
   } | null,
