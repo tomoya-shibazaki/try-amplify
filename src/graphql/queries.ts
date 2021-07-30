@@ -6,15 +6,14 @@ export const getEducationPlan = /* GraphQL */ `
   query GetEducationPlan($id: ID!) {
     getEducationPlan(id: $id) {
       id
-      courseCategory
-      courseName
-      times
-      educationType
-      years
-      workType
-      trainigType
-      chargeType
-      wageType
+      courseID
+      courseName {
+        id
+        
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -29,15 +28,43 @@ export const listEducationPlans = /* GraphQL */ `
     listEducationPlans(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        courseCategory
-        courseName
-        times
-        educationType
-        years
-        workType
-        trainigType
-        chargeType
-        wageType
+        courseID
+        courseName {
+          id
+          
+          name
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getCourse = /* GraphQL */ `
+  query GetCourse($id: ID!) {
+    getCourse(id: $id) {
+      id
+      
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listCourses = /* GraphQL */ `
+  query ListCourses(
+    $filter: ModelCourseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCourses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        
+        name
         createdAt
         updatedAt
       }

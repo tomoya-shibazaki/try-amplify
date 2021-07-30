@@ -1,15 +1,20 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-tryamp-dev-133416-authRole",
-      "UnauthRoleArn": "arn:aws:iam::087760967110:role/amplify-tryamp-dev-133416-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::087760967110:role/amplify-tryamp-dev-133416-authRole",
+      "AuthRoleName": "amplify-tryamp-dev-184528-authRole",
+      "UnauthRoleArn": "arn:aws:iam::087760967110:role/amplify-tryamp-dev-184528-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::087760967110:role/amplify-tryamp-dev-184528-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-tryamp-dev-133416-deployment",
-      "UnauthRoleName": "amplify-tryamp-dev-133416-unauthRole",
-      "StackName": "amplify-tryamp-dev-133416",
-      "StackId": "arn:aws:cloudformation:us-east-1:087760967110:stack/amplify-tryamp-dev-133416/157f66c0-ef5d-11eb-995a-0ab49d07c7eb",
-      "AmplifyAppId": "d1sgrpc63wjk9s"
+      "DeploymentBucketName": "amplify-tryamp-dev-184528-deployment",
+      "UnauthRoleName": "amplify-tryamp-dev-184528-unauthRole",
+      "StackName": "amplify-tryamp-dev-184528",
+      "StackId": "arn:aws:cloudformation:us-east-1:087760967110:stack/amplify-tryamp-dev-184528/8e51fa60-ef88-11eb-8606-0e580a5372a7",
+      "AmplifyAppId": "d1p2n4z1hjw75y"
+    },
+    "categories": {
+      "auth": {
+        "tryamp4552130a": {}
+      }
     }
   }
 }

@@ -1,15 +1,38 @@
-import React, {useEffect} from 'react';
+import React, {createContext, useReducer, useEffect} from 'react';
 import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';
 import awsmobile from './aws-exports';
 import EducationPlans from './EducationPlans'
-import Form from './Form'
+import AddEducationPlan from './AddEducationPlans'
 
+type ContextType = {
+  state: [];
+  dispatch: any;
+};
+
+export const CourseContext = createContext<ContextType>({
+  state: [],
+  dispatch: null
+})
 
 Amplify.configure(awsmobile);
 
 const App = () => {
+  type Action = {
+    type: 'SET',
+    payload: []
+  }
+  const initialState: [] = []
+  const reducer = (state: [], action: Action) => {
+    switch (action.type) {
+      case 'SET':
+        return action.payload
+      default:
+        return action.payload
+    }
+  }
+  const [state, dispatch] = useReducer(reducer, initialState)
   const [authState, setAuthState] = React.useState<AuthState>();
 
   useEffect(() => {
@@ -19,14 +42,13 @@ const App = () => {
   }, [])
 
   return authState === AuthState.SignedIn ? (
-    <div className="App">
-      <EducationPlans />
-      <br />
-      <hr />
-      <br />
-      <Form />
+    <CourseContext.Provider value={{ state, dispatch}}>
+      <div className="App">
       <AmplifySignOut/>
-    </div>
+      <EducationPlans />
+      <AddEducationPlan />
+      </div>
+    </CourseContext.Provider>
   ) : (
     <AmplifyAuthenticator/>
   )

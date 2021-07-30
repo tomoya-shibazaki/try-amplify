@@ -1,12 +1,10 @@
 type EducationPlan @model {
   id: ID!
-  courseCategory: String!
-  courseName: String!
-  times: Int!
-  educationType: String!
-  years: Int!
-  workType: String!
-  trainigType: String!
-  chargeType: String!
-  wageType: String!
+  courseID: ID!
+  courseName: Course! @connection(fields: ["courseID"])
+}
+
+type Course @model {
+  id: ID!
+  name: String!
 }

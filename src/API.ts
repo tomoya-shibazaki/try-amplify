@@ -4,33 +4,17 @@
 
 export type CreateEducationPlanInput = {
   id?: string | null,
-  courseCategory: string,
-  courseName: string,
-  times: number,
-  educationType: string,
-  years: number,
-  workType: string,
-  trainigType: string,
-  chargeType: string,
-  wageType: string,
+  courseID: string,
 };
 
 export type ModelEducationPlanConditionInput = {
-  courseCategory?: ModelStringInput | null,
-  courseName?: ModelStringInput | null,
-  times?: ModelIntInput | null,
-  educationType?: ModelStringInput | null,
-  years?: ModelIntInput | null,
-  workType?: ModelStringInput | null,
-  trainigType?: ModelStringInput | null,
-  chargeType?: ModelStringInput | null,
-  wageType?: ModelStringInput | null,
+  courseID?: ModelIDInput | null,
   and?: Array< ModelEducationPlanConditionInput | null > | null,
   or?: Array< ModelEducationPlanConditionInput | null > | null,
   not?: ModelEducationPlanConditionInput | null,
 };
 
-export type ModelStringInput = {
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -70,6 +54,44 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type EducationPlan = {
+  __typename: "EducationPlan",
+  id: string,
+  courseID: string,
+  courseName: Course,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type Course = {
+  __typename: "Course",
+  id: string,
+  name: string,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type UpdateEducationPlanInput = {
+  id: string,
+  courseID?: string | null,
+};
+
+export type DeleteEducationPlanInput = {
+  id: string,
+};
+
+export type CreateCourseInput = {
+  id?: string | null,
+  name: string,
+};
+
+export type ModelCourseConditionInput = {
+  name?: ModelStringInput | null,
+  and?: Array< ModelCourseConditionInput | null > | null,
+  or?: Array< ModelCourseConditionInput | null > | null,
+  not?: ModelCourseConditionInput | null,
+};
+
 export type ModelIntInput = {
   ne?: number | null,
   eq?: number | null,
@@ -82,56 +104,7 @@ export type ModelIntInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
-export type EducationPlan = {
-  __typename: "EducationPlan",
-  id: string,
-  courseCategory: string,
-  courseName: string,
-  times: number,
-  educationType: string,
-  years: number,
-  workType: string,
-  trainigType: string,
-  chargeType: string,
-  wageType: string,
-  createdAt: string,
-  updatedAt: string,
-};
-
-export type UpdateEducationPlanInput = {
-  id: string,
-  courseCategory?: string | null,
-  courseName?: string | null,
-  times?: number | null,
-  educationType?: string | null,
-  years?: number | null,
-  workType?: string | null,
-  trainigType?: string | null,
-  chargeType?: string | null,
-  wageType?: string | null,
-};
-
-export type DeleteEducationPlanInput = {
-  id: string,
-};
-
-export type ModelEducationPlanFilterInput = {
-  id?: ModelIDInput | null,
-  courseCategory?: ModelStringInput | null,
-  courseName?: ModelStringInput | null,
-  times?: ModelIntInput | null,
-  educationType?: ModelStringInput | null,
-  years?: ModelIntInput | null,
-  workType?: ModelStringInput | null,
-  trainigType?: ModelStringInput | null,
-  chargeType?: ModelStringInput | null,
-  wageType?: ModelStringInput | null,
-  and?: Array< ModelEducationPlanFilterInput | null > | null,
-  or?: Array< ModelEducationPlanFilterInput | null > | null,
-  not?: ModelEducationPlanFilterInput | null,
-};
-
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -147,9 +120,40 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
+export type UpdateCourseInput = {
+  id: string,
+  name?: string | null,
+};
+
+export type DeleteCourseInput = {
+  id: string,
+};
+
+export type ModelEducationPlanFilterInput = {
+  id?: ModelIDInput | null,
+  courseID?: ModelIDInput | null,
+  and?: Array< ModelEducationPlanFilterInput | null > | null,
+  or?: Array< ModelEducationPlanFilterInput | null > | null,
+  not?: ModelEducationPlanFilterInput | null,
+};
+
 export type ModelEducationPlanConnection = {
   __typename: "ModelEducationPlanConnection",
   items?:  Array<EducationPlan | null > | null,
+  nextToken?: string | null,
+};
+
+export type ModelCourseFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelCourseFilterInput | null > | null,
+  or?: Array< ModelCourseFilterInput | null > | null,
+  not?: ModelCourseFilterInput | null,
+};
+
+export type ModelCourseConnection = {
+  __typename: "ModelCourseConnection",
+  items?:  Array<Course | null > | null,
   nextToken?: string | null,
 };
 
@@ -162,15 +166,14 @@ export type CreateEducationPlanMutation = {
   createEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -185,15 +188,14 @@ export type UpdateEducationPlanMutation = {
   updateEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -208,15 +210,59 @@ export type DeleteEducationPlanMutation = {
   deleteEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateCourseMutationVariables = {
+  input: CreateCourseInput,
+  condition?: ModelCourseConditionInput | null,
+};
+
+export type CreateCourseMutation = {
+  createCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateCourseMutationVariables = {
+  input: UpdateCourseInput,
+  condition?: ModelCourseConditionInput | null,
+};
+
+export type UpdateCourseMutation = {
+  updateCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteCourseMutationVariables = {
+  input: DeleteCourseInput,
+  condition?: ModelCourseConditionInput | null,
+};
+
+export type DeleteCourseMutation = {
+  deleteCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -230,15 +276,14 @@ export type GetEducationPlanQuery = {
   getEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -256,15 +301,48 @@ export type ListEducationPlansQuery = {
     items?:  Array< {
       __typename: "EducationPlan",
       id: string,
-      courseCategory: string,
-      courseName: string,
-      times: number,
-      educationType: string,
-      years: number,
-      workType: string,
-      trainigType: string,
-      chargeType: string,
-      wageType: string,
+      courseID: string,
+      courseName:  {
+        __typename: "Course",
+        id: string,
+        name: string,
+        createdAt: string,
+        updatedAt: string,
+      },
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetCourseQueryVariables = {
+  id: string,
+};
+
+export type GetCourseQuery = {
+  getCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListCoursesQueryVariables = {
+  filter?: ModelCourseFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListCoursesQuery = {
+  listCourses?:  {
+    __typename: "ModelCourseConnection",
+    items?:  Array< {
+      __typename: "Course",
+      id: string,
+      name: string,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -276,15 +354,14 @@ export type OnCreateEducationPlanSubscription = {
   onCreateEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -294,15 +371,14 @@ export type OnUpdateEducationPlanSubscription = {
   onUpdateEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -312,15 +388,44 @@ export type OnDeleteEducationPlanSubscription = {
   onDeleteEducationPlan?:  {
     __typename: "EducationPlan",
     id: string,
-    courseCategory: string,
-    courseName: string,
-    times: number,
-    educationType: string,
-    years: number,
-    workType: string,
-    trainigType: string,
-    chargeType: string,
-    wageType: string,
+    courseID: string,
+    courseName:  {
+      __typename: "Course",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+    },
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateCourseSubscription = {
+  onCreateCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateCourseSubscription = {
+  onUpdateCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteCourseSubscription = {
+  onDeleteCourse?:  {
+    __typename: "Course",
+    id: string,
+    name: string,
     createdAt: string,
     updatedAt: string,
   } | null,

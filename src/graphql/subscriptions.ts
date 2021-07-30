@@ -6,15 +6,13 @@ export const onCreateEducationPlan = /* GraphQL */ `
   subscription OnCreateEducationPlan {
     onCreateEducationPlan {
       id
-      courseCategory
-      courseName
-      times
-      educationType
-      years
-      workType
-      trainigType
-      chargeType
-      wageType
+      courseID
+      courseName {
+        id
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -24,15 +22,13 @@ export const onUpdateEducationPlan = /* GraphQL */ `
   subscription OnUpdateEducationPlan {
     onUpdateEducationPlan {
       id
-      courseCategory
-      courseName
-      times
-      educationType
-      years
-      workType
-      trainigType
-      chargeType
-      wageType
+      courseID
+      courseName {
+        id
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
@@ -42,15 +38,43 @@ export const onDeleteEducationPlan = /* GraphQL */ `
   subscription OnDeleteEducationPlan {
     onDeleteEducationPlan {
       id
-      courseCategory
-      courseName
-      times
-      educationType
-      years
-      workType
-      trainigType
-      chargeType
-      wageType
+      courseID
+      courseName {
+        id
+        name
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateCourse = /* GraphQL */ `
+  subscription OnCreateCourse {
+    onCreateCourse {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCourse = /* GraphQL */ `
+  subscription OnUpdateCourse {
+    onUpdateCourse {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCourse = /* GraphQL */ `
+  subscription OnDeleteCourse {
+    onDeleteCourse {
+      id
+      name
       createdAt
       updatedAt
     }

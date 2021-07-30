@@ -1,5 +1,12 @@
 {
-  "auth": {},
+  "auth": {
+    "tryamp4552130a": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
   "api": {
     "tryamp": {
       "service": "AppSync",
@@ -9,7 +16,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authtryampc49f67e7"
+              "userPoolId": "authtryamp4552130a"
             }
           },
           "additionalAuthenticationProviders": []
