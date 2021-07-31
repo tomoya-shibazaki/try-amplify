@@ -9,7 +9,6 @@ export const getEducationPlan = /* GraphQL */ `
       courseID
       courseName {
         id
-        
         name
         createdAt
         updatedAt
@@ -31,7 +30,6 @@ export const listEducationPlans = /* GraphQL */ `
         courseID
         courseName {
           id
-          
           name
           createdAt
           updatedAt
@@ -47,7 +45,6 @@ export const getCourse = /* GraphQL */ `
   query GetCourse($id: ID!) {
     getCourse(id: $id) {
       id
-      
       name
       createdAt
       updatedAt
@@ -63,7 +60,6 @@ export const listCourses = /* GraphQL */ `
     listCourses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        
         name
         createdAt
         updatedAt

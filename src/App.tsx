@@ -3,16 +3,15 @@ import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';
 import awsmobile from './aws-exports';
-import EducationPlans from './EducationPlans'
-import AddEducationPlan from './AddEducationPlans'
+import EducationList from './screen/EducationList'
 
 type ContextType = {
-  state: [];
+  option: [];
   dispatch: any;
 };
 
 export const CourseContext = createContext<ContextType>({
-  state: [],
+  option: [],
   dispatch: null
 })
 
@@ -24,7 +23,7 @@ const App = () => {
     payload: []
   }
   const initialState: [] = []
-  const reducer = (state: [], action: Action) => {
+  const reducer = (option: [], action: Action) => {
     switch (action.type) {
       case 'SET':
         return action.payload
@@ -32,7 +31,7 @@ const App = () => {
         return action.payload
     }
   }
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [option, dispatch] = useReducer(reducer, initialState)
   const [authState, setAuthState] = React.useState<AuthState>();
 
   useEffect(() => {
@@ -42,11 +41,10 @@ const App = () => {
   }, [])
 
   return authState === AuthState.SignedIn ? (
-    <CourseContext.Provider value={{ state, dispatch}}>
+    <CourseContext.Provider value={{ option, dispatch}}>
       <div className="App">
       <AmplifySignOut/>
-      <EducationPlans />
-      <AddEducationPlan />
+      <EducationList />
       </div>
     </CourseContext.Provider>
   ) : (
