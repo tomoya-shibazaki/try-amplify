@@ -1,27 +1,16 @@
-import React, {createContext, useReducer, useEffect} from 'react';
+import React, {useReducer, useEffect} from 'react';
 import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';
 import awsmobile from './aws-exports';
 import EducationList from './screen/EducationList'
+import { Action } from '../types/type';
+import { CourseContext } from './store/context'
 
-type ContextType = {
-  option: [];
-  dispatch: any;
-};
-
-export const CourseContext = createContext<ContextType>({
-  option: [],
-  dispatch: null
-})
 
 Amplify.configure(awsmobile);
 
 const App = () => {
-  type Action = {
-    type: 'SET',
-    payload: []
-  }
   const initialState: [] = []
   const reducer = (option: [], action: Action) => {
     switch (action.type) {

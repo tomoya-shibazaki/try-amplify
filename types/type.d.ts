@@ -16,3 +16,13 @@ export type EducationPlan = {
     createdAt: string,
     updatedAt: string
 }
+
+export type ContextType = {
+    option: [];
+    dispatch: any;
+}
+
+export type Action = {
+    type: 'SET',
+    payload: []
+}
