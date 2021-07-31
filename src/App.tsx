@@ -4,7 +4,7 @@ import {AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';
 import awsmobile from './aws-exports';
 import EducationList from './screen/EducationList'
-import { Action } from '../types/type';
+import { Action } from './types/type';
 import { CourseContext } from './store/context'
 
 

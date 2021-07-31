@@ -6,7 +6,7 @@ import {listEducationPlans, listCourses} from '../graphql/queries'
 import {createEducationPlan} from "../graphql/mutations"
 import { ListEducationPlansQuery, ListCoursesQuery } from '../API';
 import awsmobile from '../aws-exports';
-import { EducationPlan, Course } from '../../types/type'
+import { EducationPlan, Course } from '../types/type'
 
 
 

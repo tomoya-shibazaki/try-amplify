@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { ContextType } from '../../types/type';
+import { ContextType } from '../types/type';
 
 export const CourseContext = createContext<ContextType>({
     option: [],
