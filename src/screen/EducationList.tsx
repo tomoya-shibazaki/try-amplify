@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useContext} from 'react';
-import { CourseContext } from '../store/context';
+import { CourseContext } from '../store/ContextProvider';
 import Amplify, {API, graphqlOperation} from "aws-amplify";
 import {GraphQLResult} from '@aws-amplify/api/lib/types'
 import {listEducationPlans, listCourses} from '../graphql/queries'
@@ -54,7 +54,6 @@ const EducationList: React.FC = () => {
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCheck(prevCheck => !prevCheck)
     if (check) {
-      console.log('course: ',course)
       alert('Update Courses')
     }
   }
