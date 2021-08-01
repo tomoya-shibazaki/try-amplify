@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Amplify from "aws-amplify";
 import {AmplifyAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
 import {AuthState, onAuthUIStateChange} from '@aws-amplify/ui-components';

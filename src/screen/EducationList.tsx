@@ -3,7 +3,7 @@ import { CourseContext } from '../store/ContextProvider';
 import Amplify, {API, graphqlOperation} from "aws-amplify";
 import {GraphQLResult} from '@aws-amplify/api/lib/types'
 import {listEducationPlans, listCourses} from '../graphql/queries'
-import {createEducationPlan} from "../graphql/mutations"
+import {createEducationPlan, updateEducationPlan} from "../graphql/mutations"
 import { ListEducationPlansQuery, ListCoursesQuery } from '../API';
 import awsmobile from '../aws-exports';
 import { EducationPlan, Course } from '../types/type'
@@ -21,6 +21,8 @@ const EducationList: React.FC = () => {
   const [state, setState] = useState<EducationPlan[]>([])
   const [check, setCheck] = useState(false)
   const { option, dispatch } = useContext(CourseContext);
+
+
   const fetchEducationPlans = async () => {
     // query
     const response = (await API.graphql(
@@ -54,7 +56,7 @@ const EducationList: React.FC = () => {
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCheck(prevCheck => !prevCheck)
     if (check) {
-      alert('Update Courses')
+      window.location.reload()
     }
   }
 
@@ -65,6 +67,40 @@ const EducationList: React.FC = () => {
     setCourse({
       ...course, [name]: value
     })
+  }
+
+  const renewEducationPlan = async (id: string, course_id: string) => {
+    try {
+      // mutation
+      await API.graphql(
+        graphqlOperation(updateEducationPlan, {
+          input: {
+            id: id, 
+            courseID: course_id
+          }
+        })
+      )
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleSelectResultChange = (e: React.FormEvent<HTMLSelectElement>, i: number) => {
+    // let name: string = e.currentTarget.name;
+    let value: string = e.currentTarget.value;
+    // console.log("index", i)
+    // console.log("name", name)
+    // console.log("value", value)
+    // console.log('state', state)
+    let newState = [...state]
+    // console.log('newState', newState)
+    console.log(state[i]['courseName']['id'])
+    newState[i]['courseName']['id'] = value
+    console.log(newState[i]['courseName']['id'])
+    setState([
+      ...newState,
+    ])
+    renewEducationPlan(state[i]['id'], value)
   }
 
   const addEducationPlan = async () => {
@@ -111,7 +147,7 @@ const EducationList: React.FC = () => {
     )
   })
 
-  const renderResultList = state.map((item) => {
+  const renderResultList = state.map((item, i) => {
       const {
           id,
           courseID,
@@ -125,9 +161,11 @@ const EducationList: React.FC = () => {
               <td>{courseID}</td>
               <td>
                 <select
-                  
+                  name="ResultcourseID" 
+                  value={courseName.id}
+                  onChange={e => handleSelectResultChange(e, i)} 
                 >
-                  <option value={selectText}>{selectText}</option>
+                  {/* <option value={selectText}>{selectText}</option> */}
                   {renderOptionList}
                 </select>
               </td>
@@ -164,7 +202,7 @@ const EducationList: React.FC = () => {
       <button onClick={handleSubmit}>新規割当追加</button>
       <form>
         <div className="ui form">
-          <div className="two fields">
+          <div className="four fields">
             <div className="field">
               <label>講座名</label>
               <select
