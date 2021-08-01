@@ -3,7 +3,7 @@ import { CourseContext } from '../store/ContextProvider';
 import Amplify, {API, graphqlOperation} from "aws-amplify";
 import {GraphQLResult} from '@aws-amplify/api/lib/types'
 import {listEducationPlans, listCourses} from '../graphql/queries'
-import {createEducationPlan, updateEducationPlan} from "../graphql/mutations"
+import {createEducationPlan, updateEducationPlan, deleteEducationPlan} from "../graphql/mutations"
 import { ListEducationPlansQuery, ListCoursesQuery } from '../API';
 import awsmobile from '../aws-exports';
 import { EducationPlan, Course } from '../types/type'
@@ -34,6 +34,21 @@ const EducationList: React.FC = () => {
     }
   }
 
+  const clearEducatioinPlan = async (id: string) => {
+    try {
+      // mutation
+      await API.graphql(
+        graphqlOperation(deleteEducationPlan, {
+          input: {
+            id: id, 
+          }
+        })
+      )
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
     fetchEducationPlans()
 
@@ -59,6 +74,14 @@ const EducationList: React.FC = () => {
       fetchEducationPlans()
     }
   }
+
+
+  const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
+    alert(`${id}を削除しますか？`)
+    clearEducatioinPlan(id)
+    fetchEducationPlans()
+  }
+  
 
   const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
     let name: string = e.currentTarget.name;
@@ -161,6 +184,7 @@ const EducationList: React.FC = () => {
                   {renderOptionList}
                 </select>
               </td>
+              <td></td>
           </tr>
       )
       } else {
@@ -169,6 +193,7 @@ const EducationList: React.FC = () => {
               <td>{id}</td>
               <td>{courseID}</td>
               <td>{courseName.name}</td>
+              <td><button onClick={e => handleDelete(e, id)}>削除</button></td>
           </tr>
       )
       }
@@ -185,6 +210,7 @@ const EducationList: React.FC = () => {
             <th>ID</th>
             <th>講座ID</th>
             <th>講座名</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
