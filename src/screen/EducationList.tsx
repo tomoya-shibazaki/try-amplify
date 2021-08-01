@@ -56,7 +56,7 @@ const EducationList: React.FC = () => {
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCheck(prevCheck => !prevCheck)
     if (check) {
-      window.location.reload()
+      fetchEducationPlans()
     }
   }
 
@@ -86,17 +86,9 @@ const EducationList: React.FC = () => {
   }
 
   const handleSelectResultChange = (e: React.FormEvent<HTMLSelectElement>, i: number) => {
-    // let name: string = e.currentTarget.name;
     let value: string = e.currentTarget.value;
-    // console.log("index", i)
-    // console.log("name", name)
-    // console.log("value", value)
-    // console.log('state', state)
     let newState = [...state]
-    // console.log('newState', newState)
-    console.log(state[i]['courseName']['id'])
     newState[i]['courseName']['id'] = value
-    console.log(newState[i]['courseName']['id'])
     setState([
       ...newState,
     ])
