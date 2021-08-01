@@ -143,10 +143,9 @@ const EducationList: React.FC = () => {
     if(course.courseID === selectText) {
       alert(selectText)
     } else {
-      alert('送信します')
-      console.log(state)
+      alert('追加します')
       addEducationPlan()
-      console.log('送信しました')
+      fetchEducationPlans()
     }
 
   }
