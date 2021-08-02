@@ -47,6 +47,7 @@ const EducationList: React.FC = () => {
     } catch (err) {
       console.log(err)
     }
+    fetchEducationPlans()
   }
 
   useEffect(() => {
@@ -131,6 +132,7 @@ const EducationList: React.FC = () => {
     } catch (err) {
       console.log(err)
     }
+    fetchEducationPlans()
   }
 
   const handleSubmit = (e: React.MouseEvent) => {
@@ -145,7 +147,6 @@ const EducationList: React.FC = () => {
     } else {
       alert('追加します')
       addEducationPlan()
-      fetchEducationPlans()
     }
 
   }
@@ -168,34 +169,29 @@ const EducationList: React.FC = () => {
           courseName
       } = item
 
-      if (check) {
-        return (
-          <tr key={id}>
-              <td>{id}</td>
-              <td>{courseID}</td>
-              <td>
-                <select
-                  name="ResultcourseID" 
-                  value={courseName.id}
-                  onChange={e => handleSelectResultChange(e, i)} 
-                >
-                  {/* <option value={selectText}>{selectText}</option> */}
-                  {renderOptionList}
-                </select>
-              </td>
-              <td></td>
-          </tr>
+      return check ? (
+        <tr key={id}>
+            <td>{id}</td>
+            <td>{courseID}</td>
+            <td>
+              <select
+                name="ResultcourseID" 
+                value={courseName.id}
+                onChange={e => handleSelectResultChange(e, i)} 
+              >
+                {renderOptionList}
+              </select>
+            </td>
+            <td></td>
+        </tr>
+      ) : (
+        <tr key={id}>
+            <td>{id}</td>
+            <td>{courseID}</td>
+            <td>{courseName.name}</td>
+            <td><button onClick={e => handleDelete(e, id)}>削除</button></td>
+        </tr>
       )
-      } else {
-        return (
-          <tr key={id}>
-              <td>{id}</td>
-              <td>{courseID}</td>
-              <td>{courseName.name}</td>
-              <td><button onClick={e => handleDelete(e, id)}>削除</button></td>
-          </tr>
-      )
-      }
   })
 
 
