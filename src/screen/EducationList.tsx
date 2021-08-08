@@ -7,6 +7,7 @@ import {createEducationPlan, updateEducationPlan, deleteEducationPlan} from "../
 import { ListEducationPlansQuery, ListCoursesQuery } from '../API';
 import awsmobile from '../aws-exports';
 import { EducationPlan, Course } from '../types/type'
+import { onCreateEducationPlan, onDeleteEducationPlan, onUpdateEducationPlan } from '../graphql/subscriptions';
 
 
 
@@ -47,8 +48,9 @@ const EducationList: React.FC = () => {
     } catch (err) {
       console.log(err)
     }
-    fetchEducationPlans()
+    // fetchEducationPlans()
   }
+
 
   useEffect(() => {
     fetchEducationPlans()
@@ -67,20 +69,57 @@ const EducationList: React.FC = () => {
       }
     }
     fetchCourses()
+
+    const onAddEducationPlan = (API.graphql(
+        graphqlOperation(onCreateEducationPlan)
+    ) as any
+    ).subscribe({
+        next: (eventData : any) => {
+          const educationplan = eventData.value.data.onCreateEducationPlan
+          setState(state => [...state, educationplan])
+        }
+    })
+
+    return () => onAddEducationPlan.unsubscribe()
   }, [dispatch])
+
+  const onRenewEducationPlan = (API.graphql(
+    graphqlOperation(onUpdateEducationPlan)
+  ) as any
+  ).subscribe({
+      next: (eventData : any) => {
+        const educationplan = eventData.value.data.onUpdateEducationPlan
+        const neweducationplan = state.map(item => (item.id === educationplan.id) ? educationplan : item)
+        setState([...neweducationplan])
+      }
+  })
 
   const handleUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCheck(prevCheck => !prevCheck)
     if (check) {
-      fetchEducationPlans()
+      // fetchEducationPlans()
+      onRenewEducationPlan.unsubscribe()
+      console.log(state)
     }
   }
 
+  const onClearEducationPlan = (API.graphql(
+    graphqlOperation(onDeleteEducationPlan)
+  ) as any
+  ).subscribe({
+      next: (eventData : any) => {
+        const educationplan = eventData.value.data.onDeleteEducationPlan
+        console.log(educationplan)
+        const neweducationplan = state.filter(item => item.id !== educationplan.id)
+        setState([...neweducationplan])
+      }
+  })
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>, id: string) => {
     alert(`${id}を削除しますか？`)
     clearEducatioinPlan(id)
-    fetchEducationPlans()
+    onClearEducationPlan.unsubscribe()
+    // fetchEducationPlans()
   }
   
 
@@ -132,8 +171,9 @@ const EducationList: React.FC = () => {
     } catch (err) {
       console.log(err)
     }
-    fetchEducationPlans()
+    // fetchEducationPlans()
   }
+
 
   const handleSubmit = (e: React.MouseEvent) => {
     e.persist();
