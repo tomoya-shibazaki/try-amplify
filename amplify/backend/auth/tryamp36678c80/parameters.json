@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "tryamp4552130a_identitypool_4552130a",
+    "identityPoolName": "tryamp36678c80_identitypool_36678c80",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "tryamp4552130a",
-    "userPoolName": "tryamp4552130a_userpool_4552130a",
+    "resourceNameTruncated": "tryamp36678c80",
+    "userPoolName": "tryamp36678c80_userpool_36678c80",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -20,6 +20,7 @@
     "requiredAttributes": [
         "email"
     ],
+    "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
@@ -28,10 +29,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "tryamp4552130a_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "tryamp36678c80_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "4552130a",
-    "resourceName": "tryamp4552130a",
+    "sharedId": "36678c80",
+    "resourceName": "tryamp36678c80",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

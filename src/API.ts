@@ -92,18 +92,6 @@ export type ModelCourseConditionInput = {
   not?: ModelCourseConditionInput | null,
 };
 
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
 export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,

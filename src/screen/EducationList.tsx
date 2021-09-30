@@ -76,6 +76,7 @@ const EducationList: React.FC = () => {
     ).subscribe({
         next: (eventData : any) => {
           const educationplan = eventData.value.data.onCreateEducationPlan
+          console.log(educationplan)
           setState(state => [...state, educationplan])
         }
     })
@@ -99,7 +100,6 @@ const EducationList: React.FC = () => {
     if (check) {
       // fetchEducationPlans()
       onRenewEducationPlan.unsubscribe()
-      console.log(state)
     }
   }
 
